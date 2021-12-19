@@ -9,12 +9,15 @@ const postRoute = require("./routes/posts");
 const catRoute = require("./routes/categories");
 
 const multer = require("multer");
+const path = require("path");
 
 //CONFIG ENV
 dotenv.config();
 
 //USING EXPRESS
 app.use(express.json());
+
+app.use("/images", express.static(path.join(__dirname, "/images")))
 
 //CONNECTING MONGODB
 mongoose.connect(process.env.MONGO_URL)
